@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: ay-bot-maker
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    healthCheckPath: /health
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: OWNER_ID
+        sync: false
+      - key: LOG_GROUP_ID
+        sync: false
+      - key: LOG_TOPIC_ID
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: REGISTRY_MESSAGE_ID
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.5-flash-lite
